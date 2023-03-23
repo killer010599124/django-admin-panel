@@ -34,8 +34,8 @@ class Migration(migrations.Migration):
                 ('description', models.TextField(default='delicious')),
                 ('image1', models.ImageField(blank=True, null=True, upload_to='images/large')),
                 ('image2', models.ImageField(blank=True, null=True, upload_to='images/small')),
-                ('category', models.ForeignKey(default=1, on_delete=django.db.models.deletion.DO_NOTHING, to='myapp.category')),
-                ('language', models.ForeignKey(default=1, on_delete=django.db.models.deletion.DO_NOTHING, to='myapp.language')),
+                ('category', models.ForeignKey(default=1, on_delete=django.db.models.deletion.DO_NOTHING, to='messebranchen.category')),
+                ('language', models.ForeignKey(default=1, on_delete=django.db.models.deletion.DO_NOTHING, to='messebranchen.language')),
             ],
             options={
                 'ordering': ['id'],
