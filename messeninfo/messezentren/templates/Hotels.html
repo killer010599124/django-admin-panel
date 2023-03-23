@@ -1,0 +1,535 @@
+{% load i18n %}
+{% load hash%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+          integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+</head>
+<body style="overflow-x: hidden;">
+<div style="background-color: #333;">
+    <div class="container">
+        <div class="row p-1 justify-content-center align-content-center">
+            <div class="col">
+                <a class="text-light " role="button">Log in</a>
+                <span class="text-light "> | </span>
+
+                <a class="text-light " role="button">Registration</a>
+            </div>
+            <div class="col text-end">
+                <div class="dropdown">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    <button class="btn btn-secondary dropdown-toggle  btn-sm" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        {{LANGUAGE_CODE}}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        {%get_available_languages as LANGUAGES %}
+                        {% for lang in LANGUAGES %}
+                        <li><a class="dropdown-item" href="../{{lang.0}}">{{lang.0}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#"><img width=200
+                                              src="https://www.messeninfo.de/usercp/css/system/images/logos/logo_de.png"
+                                              alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto  mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Measure
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Trade fairs by industry</a></li>
+                        <li><a class="dropdown-item" href="#">International trade fair cities</a></li>
+                        <li><a class="dropdown-item" href="#">Fairs by country</a></li>
+                        <li><a class="dropdown-item" href="#">Trade fair reports</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">exhibition service provider</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Enter fair</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Hotels</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="row justify-content-center p-2"
+     style="background:linear-gradient(to bottom,rgba(31,80,14,0.9) 0%,rgba(73,132,53,0.9) 100%)">
+    <input style="width: 800px;height: 40px;"
+           placeholder="Search for trade fair name, country, city, industry or service provider industry" type="text">
+</div>
+<div class="p-5" style="    position: absolute; z-index:1
+    ">
+    <div style="background: #ffffff80;width:430px" class="p-1">
+        <h2 style="color: #3e6c2f">Hotels near {{ main.firma }}
+        </h2>
+    </div>
+    <div style="background: #ffffff80;width:300px" class="mt-2">
+       <span>  {{ main.strasse }} <br/>
+         {{ main.plz }} Leipzig, Germany</span>
+
+        <h3 class="mt-2   mb-2" style="color: #3e6c2f">facts and figures
+        </h3>
+        <span>
+     
+Hall capacity: 111,300 m² <br/>
+Outdoor area: 70,000 m²
+      </span></div>
+
+    <div class="row justify-content-end" style="width:calc(100vw - 5rem)">
+
+        <div style="background: #ffffff80;width:300px;" class="mt-2">
+        <span>  Center of Leipzig 7.60 km as the crow flies <br/>
+          Airport Leipzig/Halle LEJ 7.39 km <br/>
+          Airport Dresden DRS 61.73 km <br/><br/>
+          <a href="#">Sights in Leipzig</a>
+          <a href="#">Exhibition centers and hotels in Leipzig</a>
+        </div>
+    </div>
+</div>
+<div style="width:100vw;height:500px" id="map_canvas">
+
+</div>
+
+<div class="row justify-content-center mt-3">
+      <span class="fs-6" style="max-width: 65%;font-size: 14px !important;">With around 520,000 inhabitants, Leipzig is one of the three largest cities in East Germany. With a history going back more than 800 years, the Leipzig Trade Fair is one of the oldest trade fairs in the world. The fair has a total of five interconnected exhibition halls. This results in an area of ​​102,500 m². Next to the Congress Center Leipzig there is another glass hall with various service facilities that has been awarded for its creativity. There are also some 70,000 m² of outdoor space. Due to the good signage, the fair is easy to reach by car. Sufficient parking spaces are available for visitors. The exhibition center can also be reached from the main station in six minutes as quickly as possible. There are also numerous hotels in all price categories near the main train station. Hotels at the fair are also available. Major trade fairs are INTERSCHUTZ, the leading trade fair for rescue, fire/disaster control and security, the Leipzig Book Fair and MUTEC, the trade fair for museum and exhibition technology.
+      </span>
+</div>
+
+<div class="mt-3" style="background-color: #3e403d;">
+    <div class="container">
+        <div class=" p-3">
+            <form class="row">
+                <div class="col-12 col-lg-3 ">
+                    <input type="email" placeholder="Location" class="form-control " id="exampleInputEmail1"
+                           aria-describedby="emailHelp">
+
+                </div>
+                <div class="col-12 col-lg-2">
+                    <input type="date" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="col-12 col-lg-2 x">
+
+                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="col-12 col-lg-2 ">
+
+                    <select id="disabledSelect" class="form-select ">
+                        <option>Disabled select</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn col-12 col-lg-2 " style="color:#fff;background-color: #3b91aa;">Search
+                    Hotals
+                </button>
+            </form>
+            <div class="row">
+                <label class="col text-light" for="">Please note: trade fair dates are subject to change.</label>
+                <a role="button" class=" col text-light text-right" style="text-align: right;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    " for="">More search options and trade fair dates
+                    <i class="fa fa-caret-down"
+                       style="font-size: 21px; float:right; margin-top:-2px; padding-left:0px;"></i>
+                    <i class="fa fa-caret-up"
+                       style="font-size: 21px; float:right; margin-top:-2px; padding-left:0px;"></i>
+
+                </a>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+<div class="container mt-1">
+
+    <span for="">50 hotels from 2 to 4 stars for 33.00 to 197.00 euros at a distance of 0.44 km to 6.2 km.
+    </span>
+
+    <div class="row">
+        <div class="col-2">
+            Frequently recommended:
+        </div>
+        <div class="col-4">
+            <a href="" class="text-decoration-none">Zollikof Aparts Sauna & Studio Apartments <i style="color: #85b76c"
+                                                                                                 class="fas fa-star"></i><i
+                    style="color: #85b76c" class="fas fa-star"></i><i style="color: #85b76c" class="fas fa-star"></i>
+            </a>
+            <br>
+            <a href="" class="text-decoration-none">Apart hotel guest house <i class="fas fa-star"
+                                                                               style="color: #85b76c"></i><i
+                    class="fas fa-star" style="color: #85b76c"></i><i style="color: #85b76c" class="fas fa-star"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col row">
+            <label class="col-3">select sorting</label>
+            <select class="form-select col" name="" id="">
+                <option value="">Without Sorting</option>
+                <option value="">Without Sorting</option>
+                <option value="">Without Sorting</option>
+            </select>
+        </div>
+        <div class="col row justify-content-end">
+            <div class="col-1 m-1" style="width: 42px;
+        height: 30px;
+        display: block;
+        border-radius: 3px;
+        /* background-color: #2d5f24; */
+        color: #2d5f24;
+        font-size: 18px;
+        line-height: 30px;
+        text-align: center;
+        font-weight: normal;
+        cursor: pointer;">
+                <i class="fa fa-th-list"></i>
+            </div>
+            <div class="col-1 m-1" style="width: 42px;
+        height: 30px;
+        display: block;
+        border-radius: 3px;
+        font-size: 18px;
+        color: white;
+        background-color: #2d5f24;
+        line-height: 30px;
+        text-align: center;
+        font-weight: normal;
+        cursor: pointer;">
+                <i class="fa fa-th"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4 ">
+    <div class="row">
+        {% for item in items %}
+
+        <div class="card col-12 col-lg-3 mt-2 border-0">
+            <img src="https://www.messeninfo.de/images/noHotelPicture.png" class="card-img-top" alt="...">
+            <div class="card-body" style="background-color: #f6f8f3;">
+                <h6 style="   position: absolute;
+            top: 0px;
+            right: 30px;
+            background: #2d5f24;
+            color: #fff;
+            width: 40px;
+            height: 50px;
+            text-align: center;padding-top: 15px;">
+                    1
+                </h6>
+                <div class="row">
+                    {% concat "firma" LANGUAGE_CODE as name %}
+
+                    <h5 class="card-title col-8">
+                        {{ item.firma }}
+                        <br>
+                        <span style="font-size: 14px;">{{ item.strasse }}</span>
+                    </h5>
+                    <div class="col-4">
+                        <i class="fas fa-star" style="color: #85b76c"></i><i class="fas fa-star"
+                                                                             style="color: #85b76c"></i><i
+                            style="color: #85b76c" class="fas fa-star"></i>
+                        <br>
+                        <i class="fa-solid fa-thumbs-up"></i>78%
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        <h5>2.51</h5>
+                        <h6>kilometre</h6>
+                    </div>
+                    <div class="col"><h5 style="color: #499153">from EUR 70.00</h5>
+                        <h6>per room and night</h6></div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <a onclick="$(this).parent().next().next().slideToggle()"
+                           class="text-decoration-none text-black" role="button">
+                            details
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </a></div>
+                    <div class="col row justify-content-end">
+                        <a href="#" class="btn " style="background-color: #3b91aa;color:#fff;">to offer</a>
+                    </div>
+                    <div class="description" style="display:none">
+                        {% concat "text" LANGUAGE_CODE as text %}
+
+                        {{ item.text_en }}
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        {%endfor%}
+
+    </div>
+</div>
+
+
+</div>
+</div>
+
+<div style="background-color: #3E403D;">
+    <div class="container">
+        <div class="row p-5">
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center"
+                 style="height: 200px">
+                <h3>23 fairs</h3>
+            </div>
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+            <div class="col-12 col-lg-3 text-light text-center d-flex flex-column justify-content-center align-content-center align-items-center">
+                <img width="100" src="https://www.messeninfo.de/vorschau/grindtec_logo_3811.png" alt="">
+                <p class="mt-2">03/07/2023 - 03/10/2023</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="background-color: #305e22; height: 80px;">
+    <div class="container">
+        <div class="row pull-right p-3" style="margin-right: 30px;
+            float: right!important;">
+            <a href="https://www.facebook.com/messeninfo/" style="    width: 40px;
+        height: 40px;
+        padding: 8px 8px;
+        font-size: 18px;
+        line-height: 1.33;
+        margin-left: 10px;
+        border-radius: 20px;
+        color: #305e22;
+        background-color: #c1cfbd;" class="btn facebook" target="_blank"><i class="fa-brands fa-facebook-f"></i></i></a>
+            <a href="https://plus.google.com/+MesseninfoDe/" style="    width: 40px;
+         height: 40px;
+         padding: 8px 8px;
+         font-size: 18px;
+         margin-left: 10px;
+         line-height: 1.33;
+         border-radius: 20px;
+         color: #305e22;
+         background-color: #c1cfbd;" class="btn btn-circle google" target="_blank"><i
+                    class="fa-brands fa-google-plus-g"></i> </a>
+            <a href="https://twitter.com/messeninfo" style="    width: 40px;
+         height: 40px;
+         padding: 8px 8px;
+         font-size: 18px;
+         margin-left: 10px;
+         border-radius: 20px;
+         color: #305e22;
+         background-color: #c1cfbd;" class="btn btn-circle twitter" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="pt-3" style="background-color: #488633;">
+    <div class="container ">
+        <div class="row text-light">
+            <div class="col-12 col-md-4 row ">
+                <div class="col-12 p-0 m-0 pb-1 mt-2" style="border-bottom: 1px solid #ffffff50;height: fit-content">
+                    <a role="button">Trade fairs by industry</a></div>
+                <div class="col-12 p-0 m-0 pb-1 mt-2" style="border-bottom: 1px solid #ffffff50;height: fit-content">
+                    <a role="button">Trade fairs by industry</a></div>
+                <div class="col-12 p-0 m-0 pb-1 mt-2" style="border-bottom: 1px solid #ffffff50;height: fit-content">
+                    <a role="button">Trade fairs by industry</a></div>
+                <div class="col-12 p-0 m-0 pb-1 mt-2" style="border-bottom: 1px solid #ffffff50;height: fit-content">
+                    <a role="button">Trade fairs by industry</a></div>
+                <div class="col-12 p-0 m-0 pb-1 mt-2" style="border-bottom: 1px solid #ffffff50;height: fit-content">
+                    <a role="button">Trade fairs by industry</a></div>
+                <div class="col-12 p-0 m-0 pb-1 mt-2" style="border-bottom: 1px solid #ffffff50;height: fit-content">
+                    <a role="button">Trade fairs by industry</a></div>
+
+
+            </div>
+
+            <div class="col-12 col-md-4 d-flex justify-content-center align-content-center">
+                <img width=300 src="https://www.messeninfo.de/images/mi15/messeninfo-app-banner_de.png" alt="">
+            </div>
+            <div class="col-12 col-md-4 row">
+                <div class="col-12 p-0 m-0 pb-1 mt-2" style="border-bottom: 1px solid #ffffff50;height: fit-content">
+                    <a role="button">Trade fairs by industry</a></div>
+                <div class="col-12 p-0 m-0 pb-1 mt-2" style="border-bottom: 1px solid #ffffff50;height: fit-content">
+                    <a role="button">Trade fairs by industry</a></div>
+                <div class="col-12 p-0 m-0 pb-1 mt-2" style="border-bottom: 1px solid #ffffff50;height: fit-content">
+                    <a role="button">Trade fairs by industry</a></div>
+                <div class="col-12 p-0 m-0 pb-1 mt-2" style="border-bottom: 1px solid #ffffff50;height: fit-content">
+                    <a role="button">Trade fairs by industry</a></div>
+                <div class="col-12 p-0 m-0 pb-1 mt-2" style="border-bottom: 1px solid #ffffff50;height: fit-content">
+                    <a role="button">Trade fairs by industry</a></div>
+                <div class="col-12 p-0 m-0 pb-1 mt-2" style="border-bottom: 1px solid #ffffff50;height: fit-content">
+                    <a role="button">Trade fairs by industry</a></div>
+
+
+            </div>
+        </div>
+        <div class="row p-0 mt-3 ">
+            <span class="text-light m-0 p-0" style="font-size: 14px;"> © 2008-2023 Sima Media GmbH | Texts, images, graphics and the design of this website are protected by copyright. Any use outside the narrow limits of copyright law is not permitted without consent. Abuse will be warned without warning. The logos and trade fair names shown are registered trademarks and are therefore the property of the respective companies. Changes and errors excepted! The respective trade fair organizer reserves the right to change trade fair dates or the venue. All statements without guarantee.</span>
+
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" integrity="sha512-2bMhOkE/ACz21dJT8zBOMgMecNxx0d37NND803ExktKiKdSzdwn+L7i9fdccw/3V06gM/DBWKbYmQvKMdAA9Nw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+<script async
+        src="https://maps.googleapis.com/maps/api/js?v=3.52&callback=initMap"
+        type="text/javascript"
+></script>
+
+<script>
+ window.initMap = function() {
+  var options = {
+    zoom: 5,
+    center: new google.maps.LatLng(39.909736, -98.522109), // centered US
+    mapTypeId: google.maps.MapTypeId.TERRAIN,
+    mapTypeControl: false,
+  };
+
+  // init map
+  var map = new google.maps.Map(
+    document.getElementById('map_canvas'),
+    options
+  );
+
+  var geocoder = new google.maps.Geocoder();
+  // init markers
+  {% for item in items %}
+  var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(
+      {{item.lat}},
+      {{item.lon}}
+    ),
+    map: map,
+  });
+
+  geocoder.geocode({'location': marker.getPosition()}, function(results, status) {
+      if (status === 'OK') {
+        if (results[0]) {
+          var address = results[0].formatted_address;
+          console.log('Address: ' + address);
+        } else {
+          console.log('No results found');
+        }
+      } else {
+        console.log('Geocoder failed due to: ' + status);
+      }
+    });
+
+  map.setCenter(new google.maps.LatLng({{item.lat}},
+  {{item.lon}}));
+
+  {%endfor%}
+};
+</script>
+</body>
+</html>

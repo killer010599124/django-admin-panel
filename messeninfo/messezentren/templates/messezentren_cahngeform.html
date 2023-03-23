@@ -1,0 +1,9 @@
+{% extends 'admin/change_form.html' %}
+
+{% block submit_buttons_bottom %}
+  {{ block.super }}
+
+  <input type="hidden" id="flug_url" data-url="{% url 'messezentren:flug' %}" />
+  <input type="hidden" id="verkehr_url" data-url="{% url 'messezentren:verkehr' %}" />
+
+{% endblock %}
