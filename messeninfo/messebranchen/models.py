@@ -23,8 +23,8 @@ class TradeFair(models.Model):
     language = models.ForeignKey(Language, default=1, on_delete=models.DO_NOTHING)
     category = models.ForeignKey(Category, default=1, on_delete=models.DO_NOTHING)
     description = models.TextField(default="delicious")
-    image1 = models.ImageField(null=True, blank=True, upload_to="images/large")
-    image2 = models.ImageField(null=True, blank=True, upload_to="images/small")
+    image1 = models.ImageField(null=True, blank=True, upload_to="{% static sector_images/large %}")
+    image2 = models.ImageField(null=True, blank=True, upload_to="{% static sector_images/small %}")
 
     def __str__(self):
         return self.title
