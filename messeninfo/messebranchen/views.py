@@ -5,7 +5,7 @@ from .models import Category, TradeFair
 def HomeView(request):
     context = {}
     context["dataset"] = Category.objects.all().order_by('category_name').values()
-    return render(request, "home.html", context)
+    return render(request, "branchenhome.html", context)
 
 
 def CategoryView(request, cats):

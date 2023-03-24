@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -36,10 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'rosetta',
+	# 'rosetta',
 	'airport',
 	'hrach',
 	'messezentren',
+    'messebranchen'
    # 'south',
 ]
 
@@ -86,8 +88,10 @@ DATABASES = {
 	 'default': {  
         'ENGINE': 'django.db.backends.mysql',  
         'NAME': 'messeninfo',  
-        'USER': 'schasiepen',  
-        'PASSWORD': 'Ramses2020$',  
+        # 'USER': 'schasiepen',  
+        # 'PASSWORD': 'Ramses2020$',  
+        'USER': 'root',  
+        'PASSWORD': '',
         'HOST': '127.0.0.1',  
         'PORT': '3306',  
         'OPTIONS': {  
@@ -138,8 +142,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-STATIC_ROOT = '/var/www/vhosts/web-design2.com/httpdocs/messeninfo/static/'
+# STATIC_ROOT = '/var/www/vhosts/web-design2.com/httpdocs/messeninfo/static/'
+
 STATIC_URL = 'static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), ) 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # LOCALE_PATHS¶
 # Default: [] (Empty list)
