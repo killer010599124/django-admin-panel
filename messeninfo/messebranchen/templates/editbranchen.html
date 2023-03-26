@@ -32,17 +32,17 @@
               <h4 style = "padding-left: 10vw;padding-top: 5vh;">Kategorie</h2>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de1"><img src="{% static 'flags/de.png' %}" style = "width: 2vw;"></span>
-                <input type="text"  name = 'category' value = "{{ trade.category_id }}" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text"  name = 'category' value = "{{ trade.text }}" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <h4 style = "padding-left: 10vw;">Title</h2>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de2"><img src="{% static 'flags/de.png' %}" style = "width: 2vw;"></span>
-                <input type="text"name = 'title'  class="form-control" value = "{{ trade.title }}"  aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text"name = 'title'  class="form-control" value = "{{ trade.messe_text }}"  aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <h4 style = "padding-left: 10vw;">Beschreibung</h2>
               <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text"><img src="{% static 'flags/de.png' %}" style = "width: 2vw;"></span>
-                <textarea class="form-control"  name = 'description' value = "{{trade.description}}" aria-label="With textarea"  style="height:150px">{{trade.description}}</textarea>
+                <textarea class="form-control"  name = 'description' value = "{{trade.beschreibung}}" aria-label="With textarea"  style="height:150px">{{trade.beschreibung}}</textarea>
               </div>
             </div>
 

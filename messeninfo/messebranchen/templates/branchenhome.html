@@ -62,9 +62,9 @@
               <th>löschen</th>
             </tr>
           </thead>
-          {% for data in dataset %}
+          {% for data in branchen %}
           <tr>
-            <td style = "color: green;">{{data.title}}</td>
+            <td style = "color: green;"><a href = "{% url 'edit' data.b_id  %}">{{data.text}}</a></td>
             <td  style = "color: blue;">löschen</td>
           </tr>
           {% endfor %}
