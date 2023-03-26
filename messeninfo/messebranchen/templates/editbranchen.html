@@ -17,15 +17,17 @@
         <div>
           <h2>Edit Messe Branchen</h2>
         </div>
-        {% for trade in category_posts %}.
-        {% endfor %}
+        {% for trade in category_posts|slice:":1" %}.
+        
         {% if category_posts %}
               <div style = "padding-left: 10vw;">
-                <img src="{% static 'sector_images/5/small_5.jpg' %}" alt="connect" style="width: 16vw; height: 200px;">
-                <img src="{{ trade.image2.url}}" alt="connect" style="    width: 63vw;padding-left: 5vw;height: 200px;">
+                <img src="/static/sector_images/{{ trade.b_id }}/small_{{ trade.b_id }}.jpg" alt="connect" style="width: 16vw; height: 200px;">
+                <img src="/static/sector_images/{{ trade.b_id }}/large_{{ trade.b_id }}.jpg" alt="connect" style="    width: 63vw;padding-left: 5vw;height: 200px;">
               </div>
-        {% endif %}   
-        <form method="post" enctype="multipart/form-data"  >
+        {% endif %}  
+        {{break}} 
+        {% endfor %}
+        <form method="post" enctype="multipart/form-data" >
           
           {% csrf_token %}
           <div class = "content">

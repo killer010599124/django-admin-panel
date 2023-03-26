@@ -20,35 +20,35 @@
         <div class = "content">
           <form method="post" enctype="multipart/form-data"  >
             {% csrf_token %}
-            <div class = "de">
+            <div class = "DE">
               <h2 style = "padding-left: 10vw;padding-top: 5vh;">DE</h2>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de1"><img src="{% static 'flags/de.png' %}" style = "width: 2vw;"></span>
-                <input type="text" name = 'category' class="form-control" placeholder="Kategorie[DE]" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" name = 'category1' class="form-control" placeholder="Kategorie[DE]" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de2"><img src="{% static 'flags/de.png' %}" style = "width: 2vw;"></span>
-                <input type="text" name = 'title' class="form-control" placeholder="Title(Meta)[DE]" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" name = 'title1' class="form-control" placeholder="Title(Meta)[DE]" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text"><img src="{% static 'flags/de.png' %}" style = "width: 2vw;"></span>
-                <textarea class="form-control" name = 'description' aria-label="With textarea" placeholder="Beschreibung(Meta)[DE]" style="height:150px"></textarea>
+                <textarea class="form-control" name = 'description1' aria-label="With textarea" placeholder="Beschreibung(Meta)[DE]" style="height:150px"></textarea>
               </div>
             </div>
   
-            <div class = "en">
+            <div class = "EN">
               <h2 style = "padding-left: 10vw;padding-top: 5vh;">EN</h2>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de1"><img src="{% static 'flags/en.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control" placeholder="Kategorie[EN]" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" name = 'category2' class="form-control" placeholder="Kategorie[EN]" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de2"><img src="{% static 'flags/en.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control" placeholder="Title(Meta)[EN]" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" name = 'title2' class="form-control" placeholder="Title(Meta)[EN]" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text"><img src="{% static 'flags/en.png' %}" style = "width: 2vw;"></span>
-                <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[EN]" style="height:150px"></textarea>
+                <textarea class="form-control" name = 'description2' aria-label="With textarea" placeholder="Beschreibung(Meta)[EN]" style="height:150px"></textarea>
               </div>
             </div>
   
@@ -56,15 +56,15 @@
               <h2 style = "padding-left: 10vw;padding-top: 5vh;">ES</h2>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de1"><img src="{% static 'flags/ESP.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control" placeholder="Kategorie[ES]" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" name = 'category3' class="form-control" placeholder="Kategorie[ES]" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de2"><img src="{% static 'flags/ESP.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control" placeholder="Title(Meta)[ES]" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text"  name = 'title3' class="form-control" placeholder="Title(Meta)[ES]" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text"><img src="{% static 'flags/ESP.png' %}" style = "width: 2vw;"></span>
-                <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[ES]" style="height:150px"></textarea>
+                <textarea class="form-control" name = 'description3' aria-label="With textarea" placeholder="Beschreibung(Meta)[ES]" style="height:150px"></textarea>
               </div>
             </div>
   
@@ -72,15 +72,15 @@
               <h2 style = "padding-left: 10vw;padding-top: 5vh;">FR</h2>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de1"><img src="{% static 'flags/FRA.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control" placeholder="Kategorie[FR]" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" name = 'category4' class="form-control" placeholder="Kategorie[FR]" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de2"><img src="{% static 'flags/FRA.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control" placeholder="Title(Meta)[FR]" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" name = 'title4' class="form-control" placeholder="Title(Meta)[FR]" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text"><img src="{% static 'flags/FRA.png' %}" style = "width: 2vw;"></span>
-                <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[FR]" style="height:150px"></textarea>
+                <textarea class="form-control" name = 'description4' aria-label="With textarea" placeholder="Beschreibung(Meta)[FR]" style="height:150px"></textarea>
               </div>
             </div>
   
@@ -88,31 +88,31 @@
               <h2 style = "padding-left: 10vw;padding-top: 5vh;">RU</h2>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de1"><img src="{% static 'flags/ru.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control" placeholder="Kategorie[RU]" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text"  name = 'category5' class="form-control" placeholder="Kategorie[RU]" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de2"><img src="{% static 'flags/ru.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control" placeholder="Title(Meta)[RU]" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" name = 'title5' class="form-control" placeholder="Title(Meta)[RU]" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text"><img src="{% static 'flags/ru.png' %}" style = "width: 2vw;"></span>
-                <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[RU]" style="height:150px"></textarea>
+                <textarea class="form-control" name = 'description5' aria-label="With textarea" placeholder="Beschreibung(Meta)[RU]" style="height:150px"></textarea>
               </div>
             </div>
   
-            <div class = "ZH">
-              <h2 style = "padding-left: 10vw;padding-top: 5vh;">ZH</h2>
+            <div class = "CN">
+              <h2 style = "padding-left: 10vw;padding-top: 5vh;">CN</h2>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de1"><img src="{% static 'flags/zh.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control" placeholder="Kategorie[ZH]" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" name = 'category6' class="form-control" placeholder="Kategorie[CN]" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de2"><img src="{% static 'flags/zh.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control" placeholder="Title(Meta)[ZH]" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" name = 'title6' class="form-control" placeholder="Title(Meta)[CN]" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text"><img src="{% static 'flags/zh.png' %}" style = "width: 2vw;"></span>
-                <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[ZH]" style="height:150px"></textarea>
+                <textarea class="form-control" name = 'description6' aria-label="With textarea" placeholder="Beschreibung(Meta)[CN]" style="height:150px"></textarea>
               </div>
             </div>
   

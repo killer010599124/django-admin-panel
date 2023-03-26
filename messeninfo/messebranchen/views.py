@@ -4,6 +4,7 @@ from .forms import ImageForm
 from django.core.files.storage import FileSystemStorage
 import os
 import string
+from django.db.models import Max
 
 def HomeView(request):
     
@@ -11,6 +12,10 @@ def HomeView(request):
     context = {}
     context["dataset"] = TradeFair.objects.all().order_by('title').values()
     context["branchen"] = Branchen.objects.filter(sprach_id = 2).order_by('text').values()
+    
+    
+    
+    
     context["alphabet"] = alphabet
     return render(request, "branchenhome.html", context)
 
@@ -32,10 +37,44 @@ def NewBranchenView(request):
     # return render(request, 'newbranchen.html', {'form': form})
    
     if request.method == 'POST':
-   
-        en=TradeFair(category_id=request.POST.get('category'),title=request.POST.get('title'),
-        description=request.POST.get('description'),image1=request.FILES.get('image1'),image2=request.FILES.get('image2'))
+        
+        image1 = request.FILES.get('image1')
+        image2 = request.FILES.get('image2')
+        
+        maxBid = Branchen.objects.all()
+        temp = maxBid.aggregate(Max('b_id'))
+        b_id = 0
+        for key,val in temp.items():
+            total = val + 1
+            b_id = total
+        print(b_id,key)
+        
+        updateData=TradeFair(b_id=b_id,image1=request.FILES.get('image1'),image2=request.FILES.get('image2'))
+        updateData.save()
+        
+        de=Branchen(b_id=b_id,sprach_id = 1,text=request.POST.get('category1'),
+        messe_text=request.POST.get('title1'),beschreibung=request.POST.get('description1'))
+        de.save()
+        
+        en=Branchen(b_id=b_id,sprach_id = 2,text=request.POST.get('category2'),
+        messe_text=request.POST.get('title2'),beschreibung=request.POST.get('description2'))
         en.save()
+        
+        es=Branchen(b_id=b_id,sprach_id = 3,text=request.POST.get('category3'),
+        messe_text=request.POST.get('title3'),beschreibung=request.POST.get('description3'))
+        es.save()
+        
+        fr=Branchen(b_id=b_id,sprach_id = 4,text=request.POST.get('category4'),
+        messe_text=request.POST.get('title4'),beschreibung=request.POST.get('description4'))
+        fr.save()
+        
+        ru=Branchen(b_id=b_id,sprach_id = 5,text=request.POST.get('category5'),
+        messe_text=request.POST.get('title5'),beschreibung=request.POST.get('description5'))
+        ru.save()
+        
+        cn=Branchen(b_id=b_id,sprach_id = 6,text=request.POST.get('category6'),
+        messe_text=request.POST.get('title6'),beschreibung=request.POST.get('description6'))
+        cn.save()
         
         return redirect('home')
         # img_obj = en.instance

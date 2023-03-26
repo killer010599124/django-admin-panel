@@ -16,10 +16,7 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(models.TradeFair)
 class TradeFairAdmin(admin.ModelAdmin):
     list_display = [
-        'title',
-        'language',
-        'category',
-        'description',
+        'b_id',
         'image1',
         'image2'
     ]
