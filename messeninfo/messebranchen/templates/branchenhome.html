@@ -39,7 +39,7 @@
 
             <div style = "display: flex; flex-direction: row; float:right">
               <p style = " margin-bottom: 0;padding-right: 0.5vw;">suchen</p>
-              <input name="search" type="text"  id="search" placeholder="Keyword">
+              <input name="search" type="text"  id="myInput" onkeyup="autoSearch()" placeholder="Keyword">
             </div>
           </div>
         </div>
@@ -48,14 +48,14 @@
         <div class="btn-group btn-group-xs" style = "width:100%;justify-content: space-between;padding-bottom: 10px; padding-top: 10px;">
             <a href="{{i}}" class="btn" style = "color: green;font-size: 30px;">All</a>
             {% for i in alphabet %}
-                <p  class="btn" style = "color: green;font-size: 30px;">{{i}}</p>
+                <button  class="btn" value = "{{i}}" style = "color: green;font-size: 30px;" onclick="letterSearch('{{i}}')">{{i}}</button>
                 {% comment %} {%filterAnime i as filterdObjs%} {% endcomment %}
                 
             {%endfor%}
           </div>
       </div>
       <div>
-        <table style="width:100%">
+        <table style="width:100%" id = "myTable">
           <thead>
             <tr>
               <th>Bezeichnung</th>
@@ -94,6 +94,51 @@
     </div>
   
   </section>
+  <script>
+    
+      function autoSearch() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }       
+        }
+      }
+      function letterSearch(item){
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.innerText;
+         
+            if (txtValue.toUpperCase()[0] == item) {
+              tr[i].style.display = "";
+              
+            } else {
+              
+              tr[i].style.display = "none";
+            }
+          }       
+        }
+       
+      }
+      
+  </script>
 </body>
 
 
