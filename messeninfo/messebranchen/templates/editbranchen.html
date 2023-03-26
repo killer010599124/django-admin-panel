@@ -37,17 +37,17 @@
                 <h4 style = "padding-left: 10vw;padding-top: 5vh;">Kategorie</h2>
                 <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                   <span class="input-group-text" id="de1"><img src="{% static 'flags/de.png' %}" style = "width: 2vw;"></span>
-                  <input type="text"  name = 'category' value = "{{ trade.text }}" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
+                  <input type="text"  name = 'category1' value = "{{ trade.text }}" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
                 </div>
                 <h4 style = "padding-left: 10vw;">Title</h2>
                 <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                   <span class="input-group-text" id="de2"><img src="{% static 'flags/de.png' %}" style = "width: 2vw;"></span>
-                  <input type="text"name = 'title'  class="form-control" value = "{{ trade.messe_text }}"  aria-label="Username" aria-describedby="basic-addon1">
+                  <input type="text" name = 'title1'  class="form-control" value = "{{ trade.messe_text }}"  aria-label="Username" aria-describedby="basic-addon1">
                 </div>
                 <h4 style = "padding-left: 10vw;">Beschreibung</h2>
                 <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
                   <span class="input-group-text"><img src="{% static 'flags/de.png' %}" style = "width: 2vw;"></span>
-                  <textarea class="form-control"  name = 'description' value = "{{trade.beschreibung}}" aria-label="With textarea"  style="height:150px">{{trade.beschreibung}}</textarea>
+                  <textarea class="form-control"  name = 'description1' value = "{{trade.beschreibung}}" aria-label="With textarea"  style="height:150px">{{trade.beschreibung}}</textarea>
                 </div>
               </div>
             {% endif %}
@@ -57,17 +57,17 @@
               <h4 style = "padding-left: 10vw;padding-top: 5vh;">Kategorie</h2>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de1"><img src="{% static 'flags/en.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control" value = "{{ trade.text }}" placeholder="Kategorie[EN]" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" name = 'category2' class="form-control" value = "{{ trade.text }}" placeholder="Kategorie[EN]" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <h4 style = "padding-left: 10vw;">Title</h2>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de2"><img src="{% static 'flags/en.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control" placeholder="Title(Meta)[EN]" value = "{{ trade.messe_text }}"  aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control"  name = 'title2' placeholder="Title(Meta)[EN]" value = "{{ trade.messe_text }}"  aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <h4 style = "padding-left: 10vw;">Beschreibung</h2>
               <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text"><img src="{% static 'flags/en.png' %}" style = "width: 2vw;"></span>
-                <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[EN]" style="height:150px">{{trade.beschreibung}}</textarea>
+                <textarea class="form-control"  name = 'description2' aria-label="With textarea" placeholder="Beschreibung(Meta)[EN]" style="height:150px">{{trade.beschreibung}}</textarea>
               </div>
             </div>
             {% endif %}
@@ -77,17 +77,17 @@
               <h4 style = "padding-left: 10vw;padding-top: 5vh;">Kategorie</h2>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de1"><img src="{% static 'flags/ESP.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control"  value = "{{ trade.text }}" placeholder="Kategorie[ES]" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" name = 'category3'  value = "{{ trade.text }}" placeholder="Kategorie[ES]" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <h4 style = "padding-left: 10vw;">Title</h2>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de2"><img src="{% static 'flags/ESP.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control" placeholder="Title(Meta)[ES]" value = "{{ trade.messe_text }}"  aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control"  name = 'title3' placeholder="Title(Meta)[ES]" value = "{{ trade.messe_text }}"  aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <h4 style = "padding-left: 10vw;">Beschreibung</h2>
               <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text"><img src="{% static 'flags/ESP.png' %}" style = "width: 2vw;"></span>
-                <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[ES]" style="height:150px">{{trade.beschreibung}}</textarea>
+                <textarea class="form-control"  name = 'description3' aria-label="With textarea" placeholder="Beschreibung(Meta)[ES]" style="height:150px">{{trade.beschreibung}}</textarea>
               </div>
             </div>
             {% endif %}
@@ -97,17 +97,17 @@
               <h4 style = "padding-left: 10vw;padding-top: 5vh;">Kategorie</h2>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de1"><img src="{% static 'flags/FRA.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control" value = "{{ trade.text }}" placeholder="Kategorie[FR]" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" name = 'category4' value = "{{ trade.text }}" placeholder="Kategorie[FR]" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <h4 style = "padding-left: 10vw;">Title</h2>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de2"><img src="{% static 'flags/FRA.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control" placeholder="Title(Meta)[FR]" value = "{{ trade.messe_text }}"  aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control"  name = 'title4' placeholder="Title(Meta)[FR]" value = "{{ trade.messe_text }}"  aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <h4 style = "padding-left: 10vw;">Beschreibung</h2>
               <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text"><img src="{% static 'flags/FRA.png' %}" style = "width: 2vw;"></span>
-                <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[FR]" style="height:150px">{{trade.beschreibung}}</textarea>
+                <textarea class="form-control"  name = 'description4' aria-label="With textarea" placeholder="Beschreibung(Meta)[FR]" style="height:150px">{{trade.beschreibung}}</textarea>
               </div>
             </div>
             {% endif %}
@@ -117,17 +117,17 @@
               <h4 style = "padding-left: 10vw;padding-top: 5vh;">Kategorie</h2>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de1"><img src="{% static 'flags/ru.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control" value = "{{ trade.text }}"  placeholder="Kategorie[RU]" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" name = 'category5' value = "{{ trade.text }}"  placeholder="Kategorie[RU]" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <h4 style = "padding-left: 10vw;">Title</h2>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de2"><img src="{% static 'flags/ru.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control" placeholder="Title(Meta)[RU]"  value = "{{ trade.messe_text }}"  aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control"  name = 'title5' placeholder="Title(Meta)[RU]"  value = "{{ trade.messe_text }}"  aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <h4 style = "padding-left: 10vw;">Beschreibung</h2>
               <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text"><img src="{% static 'flags/ru.png' %}" style = "width: 2vw;"></span>
-                <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[RU]" style="height:150px">{{trade.beschreibung}}</textarea>
+                <textarea class="form-control"  name = 'description5' aria-label="With textarea" placeholder="Beschreibung(Meta)[RU]" style="height:150px">{{trade.beschreibung}}</textarea>
               </div>
             </div>
             {% endif %}
@@ -137,17 +137,17 @@
               <h4 style = "padding-left: 10vw;padding-top: 5vh;">Kategorie</h2>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de1"><img src="{% static 'flags/zh.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control" value = "{{ trade.text }}" placeholder="Kategorie[ZH]" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" name = 'category6' value = "{{ trade.text }}" placeholder="Kategorie[ZH]" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <h4 style = "padding-left: 10vw;">Title</h2>
               <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text" id="de2"><img src="{% static 'flags/zh.png' %}" style = "width: 2vw;"></span>
-                <input type="text" class="form-control"  placeholder="Title(Meta)[ZH]" value = "{{ trade.messe_text }}"  aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control"  name = 'title6'  placeholder="Title(Meta)[ZH]" value = "{{ trade.messe_text }}"  aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <h4 style = "padding-left: 10vw;">Beschreibung</h2>
               <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
                 <span class="input-group-text"><img src="{% static 'flags/zh.png' %}" style = "width: 2vw;"></span>
-                <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[ZH]" style="height:150px">{{trade.beschreibung}}</textarea>
+                <textarea class="form-control"  name = 'description6' aria-label="With textarea" placeholder="Beschreibung(Meta)[ZH]" style="height:150px">{{trade.beschreibung}}</textarea>
               </div>
             </div>
             {% endif %}

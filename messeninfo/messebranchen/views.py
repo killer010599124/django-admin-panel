@@ -100,13 +100,24 @@ def EditBranchenView(request, cats):
     
     category_posts = Branchen.objects.filter(b_id=cats)
     if request.method == 'POST':
-        updateData = TradeFair.objects.get(category_id=cats)
-        updateData.category_id = request.POST.get('category')
-        updateData.title = request.POST.get('title')
-        updateData.description = request.POST.get('description')
-        updateData.image1 = request.FILES.get('image1')
-        updateData.image2 = request.FILES.get('image2')
+        updateData = Branchen.objects.filter(b_id=cats).order_by('sprach_id')
+        updateImage = TradeFair.objects.get(b_id = cats)
+        for p in updateData:
+            match (p.sprach_id):
+                case (1):
+                    p.category_id = request.POST.get('category1')
+                    p.title = request.POST.get('title1')
+                    p.description = request.POST.get('description1')
+                    break
+                    # comment: 
+                case (_):
+                    # comment: 
+            # end match
+            
+            
         
+        updateImage.image1 = request.FILES.get('image1')
+        updateImage.image2 = request.FILES.get('image2')
         # updateData=TradeFair(category_id=request.POST.get('category'),title=request.POST.get('title'),
         #     description=request.POST.get('description'),image1=request.FILES.get('image1'),image2=request.FILES.get('image2'))
         updateData.save()
