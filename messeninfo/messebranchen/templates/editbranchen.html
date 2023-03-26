@@ -18,125 +18,149 @@
           <h2>Edit Messe Branchen</h2>
         </div>
         {% for trade in category_posts %}.
-        <div class = "content">
-          <div class = "de">
-            <h2 style = "padding-left: 10vw;padding-top: 5vh;">DE</h2>
-            <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
-              <span class="input-group-text" id="de1"><img src="{% static 'flags/de.png' %}" style = "width: 2vw;"></span>
-              <input type="text" class="form-control" placeholder="Kategorie[DE]" aria-label="Username" aria-describedby="basic-addon1">
+        
+        {% if trade %}
+              <div style = "padding-left: 10vw;">
+                <img src="{{ trade.image1.url}}" alt="connect" style="    width: 16vw; height: 200px;">
+                <img src="{{ trade.image2.url}}" alt="connect" style="    width: 63vw;padding-left: 5vw;height: 200px;">
+              </div>
+        {% endif %}   
+        <form method="post" enctype="multipart/form-data"  >
+          {% csrf_token %}
+          <div class = "content">
+            <div class = "de">
+              <h4 style = "padding-left: 10vw;padding-top: 5vh;">Kategorie</h2>
+              <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
+                <span class="input-group-text" id="de1"><img src="{% static 'flags/de.png' %}" style = "width: 2vw;"></span>
+                <input type="text"  name = 'category' value = "{{ trade.category_id }}" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <h4 style = "padding-left: 10vw;">Title</h2>
+              <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
+                <span class="input-group-text" id="de2"><img src="{% static 'flags/de.png' %}" style = "width: 2vw;"></span>
+                <input type="text"name = 'title'  class="form-control" value = "{{ trade.title }}"  aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <h4 style = "padding-left: 10vw;">Beschreibung</h2>
+              <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
+                <span class="input-group-text"><img src="{% static 'flags/de.png' %}" style = "width: 2vw;"></span>
+                <textarea class="form-control"  name = 'description' value = "{{trade.description}}" aria-label="With textarea"  style="height:150px">{{trade.description}}</textarea>
+              </div>
             </div>
-            <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
-              <span class="input-group-text" id="de2"><img src="{% static 'flags/de.png' %}" style = "width: 2vw;"></span>
-              <input type="text" class="form-control" placeholder="Title(Meta)[DE]" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
-              <span class="input-group-text"><img src="{% static 'flags/de.png' %}" style = "width: 2vw;"></span>
-              <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[DE]" style="height:150px"></textarea>
-            </div>
-          </div>
 
-          <div class = "en">
-            <h2 style = "padding-left: 10vw;padding-top: 5vh;">EN</h2>
-            <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
-              <span class="input-group-text" id="de1"><img src="{% static 'flags/en.png' %}" style = "width: 2vw;"></span>
-              <input type="text" class="form-control" placeholder="Kategorie[EN]" aria-label="Username" aria-describedby="basic-addon1">
+            <div class = "en">
+              <h4 style = "padding-left: 10vw;padding-top: 5vh;">Kategorie</h2>
+              <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
+                <span class="input-group-text" id="de1"><img src="{% static 'flags/en.png' %}" style = "width: 2vw;"></span>
+                <input type="text" class="form-control" placeholder="Kategorie[EN]" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <h4 style = "padding-left: 10vw;">Title</h2>
+              <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
+                <span class="input-group-text" id="de2"><img src="{% static 'flags/en.png' %}" style = "width: 2vw;"></span>
+                <input type="text" class="form-control" placeholder="Title(Meta)[EN]" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <h4 style = "padding-left: 10vw;">Beschreibung</h2>
+              <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
+                <span class="input-group-text"><img src="{% static 'flags/en.png' %}" style = "width: 2vw;"></span>
+                <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[EN]" style="height:150px"></textarea>
+              </div>
             </div>
-            <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
-              <span class="input-group-text" id="de2"><img src="{% static 'flags/en.png' %}" style = "width: 2vw;"></span>
-              <input type="text" class="form-control" placeholder="Title(Meta)[EN]" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
-              <span class="input-group-text"><img src="{% static 'flags/en.png' %}" style = "width: 2vw;"></span>
-              <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[EN]" style="height:150px"></textarea>
-            </div>
-          </div>
 
-          <div class = "ES">
-            <h2 style = "padding-left: 10vw;padding-top: 5vh;">ES</h2>
-            <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
-              <span class="input-group-text" id="de1"><img src="{% static 'flags/ESP.png' %}" style = "width: 2vw;"></span>
-              <input type="text" class="form-control" placeholder="Kategorie[ES]" aria-label="Username" aria-describedby="basic-addon1">
+            <div class = "ES">
+              <h4 style = "padding-left: 10vw;padding-top: 5vh;">Kategorie</h2>
+              <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
+                <span class="input-group-text" id="de1"><img src="{% static 'flags/ESP.png' %}" style = "width: 2vw;"></span>
+                <input type="text" class="form-control" placeholder="Kategorie[ES]" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <h4 style = "padding-left: 10vw;">Title</h2>
+              <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
+                <span class="input-group-text" id="de2"><img src="{% static 'flags/ESP.png' %}" style = "width: 2vw;"></span>
+                <input type="text" class="form-control" placeholder="Title(Meta)[ES]" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <h4 style = "padding-left: 10vw;">Beschreibung</h2>
+              <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
+                <span class="input-group-text"><img src="{% static 'flags/ESP.png' %}" style = "width: 2vw;"></span>
+                <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[ES]" style="height:150px"></textarea>
+              </div>
             </div>
-            <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
-              <span class="input-group-text" id="de2"><img src="{% static 'flags/ESP.png' %}" style = "width: 2vw;"></span>
-              <input type="text" class="form-control" placeholder="Title(Meta)[ES]" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
-              <span class="input-group-text"><img src="{% static 'flags/ESP.png' %}" style = "width: 2vw;"></span>
-              <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[ES]" style="height:150px"></textarea>
-            </div>
-          </div>
 
-          <div class = "FR">
-            <h2 style = "padding-left: 10vw;padding-top: 5vh;">FR</h2>
-            <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
-              <span class="input-group-text" id="de1"><img src="{% static 'flags/FRA.png' %}" style = "width: 2vw;"></span>
-              <input type="text" class="form-control" placeholder="Kategorie[FR]" aria-label="Username" aria-describedby="basic-addon1">
+            <div class = "FR">
+              <h4 style = "padding-left: 10vw;padding-top: 5vh;">Kategorie</h2>
+              <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
+                <span class="input-group-text" id="de1"><img src="{% static 'flags/FRA.png' %}" style = "width: 2vw;"></span>
+                <input type="text" class="form-control" placeholder="Kategorie[FR]" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <h4 style = "padding-left: 10vw;">Title</h2>
+              <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
+                <span class="input-group-text" id="de2"><img src="{% static 'flags/FRA.png' %}" style = "width: 2vw;"></span>
+                <input type="text" class="form-control" placeholder="Title(Meta)[FR]" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <h4 style = "padding-left: 10vw;">Beschreibung</h2>
+              <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
+                <span class="input-group-text"><img src="{% static 'flags/FRA.png' %}" style = "width: 2vw;"></span>
+                <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[FR]" style="height:150px"></textarea>
+              </div>
             </div>
-            <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
-              <span class="input-group-text" id="de2"><img src="{% static 'flags/FRA.png' %}" style = "width: 2vw;"></span>
-              <input type="text" class="form-control" placeholder="Title(Meta)[FR]" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
-              <span class="input-group-text"><img src="{% static 'flags/FRA.png' %}" style = "width: 2vw;"></span>
-              <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[FR]" style="height:150px"></textarea>
-            </div>
-          </div>
 
-          <div class = "RU">
-            <h2 style = "padding-left: 10vw;padding-top: 5vh;">RU</h2>
-            <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
-              <span class="input-group-text" id="de1"><img src="{% static 'flags/ru.png' %}" style = "width: 2vw;"></span>
-              <input type="text" class="form-control" placeholder="Kategorie[RU]" aria-label="Username" aria-describedby="basic-addon1">
+            <div class = "RU">
+              <h4 style = "padding-left: 10vw;padding-top: 5vh;">Kategorie</h2>
+              <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
+                <span class="input-group-text" id="de1"><img src="{% static 'flags/ru.png' %}" style = "width: 2vw;"></span>
+                <input type="text" class="form-control" placeholder="Kategorie[RU]" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <h4 style = "padding-left: 10vw;">Title</h2>
+              <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
+                <span class="input-group-text" id="de2"><img src="{% static 'flags/ru.png' %}" style = "width: 2vw;"></span>
+                <input type="text" class="form-control" placeholder="Title(Meta)[RU]" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <h4 style = "padding-left: 10vw;">Beschreibung</h2>
+              <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
+                <span class="input-group-text"><img src="{% static 'flags/ru.png' %}" style = "width: 2vw;"></span>
+                <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[RU]" style="height:150px"></textarea>
+              </div>
             </div>
-            <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
-              <span class="input-group-text" id="de2"><img src="{% static 'flags/ru.png' %}" style = "width: 2vw;"></span>
-              <input type="text" class="form-control" placeholder="Title(Meta)[RU]" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
-              <span class="input-group-text"><img src="{% static 'flags/ru.png' %}" style = "width: 2vw;"></span>
-              <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[RU]" style="height:150px"></textarea>
-            </div>
-          </div>
 
-          <div class = "ZH">
-            <h2 style = "padding-left: 10vw;padding-top: 5vh;">ZH</h2>
-            <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
-              <span class="input-group-text" id="de1"><img src="{% static 'flags/zh.png' %}" style = "width: 2vw;"></span>
-              <input type="text" class="form-control" placeholder="Kategorie[ZH]" aria-label="Username" aria-describedby="basic-addon1">
+            <div class = "ZH">
+              <h4 style = "padding-left: 10vw;padding-top: 5vh;">Kategorie</h2>
+              <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
+                <span class="input-group-text" id="de1"><img src="{% static 'flags/zh.png' %}" style = "width: 2vw;"></span>
+                <input type="text" class="form-control" placeholder="Kategorie[ZH]" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <h4 style = "padding-left: 10vw;">Title</h2>
+              <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
+                <span class="input-group-text" id="de2"><img src="{% static 'flags/zh.png' %}" style = "width: 2vw;"></span>
+                <input type="text" class="form-control" placeholder="Title(Meta)[ZH]" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <h4 style = "padding-left: 10vw;">Beschreibung</h2>
+              <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
+                <span class="input-group-text"><img src="{% static 'flags/zh.png' %}" style = "width: 2vw;"></span>
+                <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[ZH]" style="height:150px"></textarea>
+              </div>
             </div>
-            <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
-              <span class="input-group-text" id="de2"><img src="{% static 'flags/zh.png' %}" style = "width: 2vw;"></span>
-              <input type="text" class="form-control" placeholder="Title(Meta)[ZH]" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group" style = "padding-left: 10vw; padding-right: 10vw;">
-              <span class="input-group-text"><img src="{% static 'flags/zh.png' %}" style = "width: 2vw;"></span>
-              <textarea class="form-control" aria-label="With textarea" placeholder="Beschreibung(Meta)[ZH]" style="height:150px"></textarea>
-            </div>
-          </div>
 
-          <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;padding-top: 5vh;">
-            <input type="file" style="display:none;" class="form-control" id="inputGroupFile01" onchange="showname()">
-            <input type="text"  class="form-control" placeholder="Bild(jpg:450x240)" id = 'img1'>
-            <label class="input-group-text" for="inputGroupFile01">Upload</label>
-          </div>
-          <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;padding-top: 5vh;">
-            <input type="file" style="display: none;" class="form-control" id="inputGroupFile02">
-            <input type="text"  class="form-control" placeholder="Bild(jpg:1900x400)" id = 'img2'>
-            <label class="input-group-text" for="inputGroupFile02">Upload</label>
-          </div>
+            <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;padding-top: 5vh;">
+              <input type="file" style="display:none;" name = 'image1' accept="image/*" class="form-control" id="inputGroupFile01" onchange="showname()">
+              <input type="text"  class="form-control" placeholder="Bild(jpg:450x240)" id = 'img1'>
+              <label class="input-group-text" for="inputGroupFile01">Broswer</label>
+            </div>
+            <div class="input-group mb-3" style = "padding-left: 10vw; padding-right: 10vw;">
+              <input type="file" style="display: none;" accept="image/*"  name = 'image2' class="form-control" id="inputGroupFile02" onchange="showname()">
+              <input type="text"  class="form-control" placeholder="Bild(jpg:1900x400)" id = 'img2'>
+              <label class="input-group-text" for="inputGroupFile02">Broswer</label>
+            </div>
 
-          {% comment %} <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-             {{ form.as_p }}
-            <button type="submit">Upload</button>
-          </form>
-          
-          {% if img_obj %}
-            <h3>Succesfully uploaded : {{img_obj.title}}</h3>
-            <img src="{{ img_obj.image1.url}}" alt="connect" style="max-height:300px">
-          {% endif %} {% endcomment %}
-        </div>
+            {% comment %} <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit">Upload</button>
+            </form>
+            
+            {% if img_obj %}
+              <h3>Succesfully uploaded : {{img_obj.title}}</h3>
+              <img src="{{ img_obj.image1.url}}" alt="connect" style="max-height:300px">
+            {% endif %} {% endcomment %}
+          </div>
+          <button type="submit">Update</button>
+         {{ form }}
+        </form>
         {% endfor %}
         
 		    {% endblock %}
