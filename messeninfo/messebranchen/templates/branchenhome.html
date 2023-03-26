@@ -64,8 +64,8 @@
           </thead>
           {% for data in branchen %}
           <tr>
-            <td style = "color: green;"><a href = "{% url 'edit' data.b_id  %}">{{data.text}}</a></td>
-            <td  style = "color: blue;">löschen</td>
+            <td><a style = "color: green;" href = "{% url 'edit' data.b_id  %}">{{data.text}}</a></td>
+            <td><a style = "color: blue;" href = "{% url 'delete' data.b_id  %}">löschen</a></td>
           </tr>
           {% endfor %}
         </table>

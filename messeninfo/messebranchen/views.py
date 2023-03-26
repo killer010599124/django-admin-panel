@@ -5,6 +5,9 @@ from django.core.files.storage import FileSystemStorage
 import os
 import string
 from django.db.models import Max
+import shutil
+from messeninfo.settings import STATIC_URL, STATIC_ROOT
+from django.templatetags.static import static
 
 def HomeView(request):
     
@@ -100,37 +103,69 @@ def EditBranchenView(request, cats):
     
     category_posts = Branchen.objects.filter(b_id=cats)
     if request.method == 'POST':
-        updateData = Branchen.objects.filter(b_id=cats).order_by('sprach_id')
+        updateData = Branchen.objects.filter(b_id=cats)
         updateImage = TradeFair.objects.get(b_id = cats)
+        deleteImage = TradeFair.objects.filter(b_id = cats).values()
         for p in updateData:
+            print(p.text)
             match (p.sprach_id):
                 case (1):
-                    p.category_id = request.POST.get('category1')
-                    p.title = request.POST.get('title1')
-                    p.description = request.POST.get('description1')
-                    break
+                    p.text = request.POST.get('category1')
+                    p.messe_text = request.POST.get('title1')
+                    p.beschreibung = request.POST.get('description1')
+                    
                     # comment: 
-                case (_):
-                    # comment: 
-            # end match
+                case (2):
+                    p.text = request.POST.get('category2')
+                    p.messe_text = request.POST.get('title2')
+                    p.beschreibung = request.POST.get('description2')
+                    
+                case (3):
+                    p.text = request.POST.get('category3')
+                    p.messe_text = request.POST.get('title3')
+                    p.beschreibung = request.POST.get('description3')
+                    
+                case (4):
+                    p.text = request.POST.get('category4')
+                    p.messe_text = request.POST.get('title4')
+                    p.beschreibung = request.POST.get('description4')
+                    
+                case (5):
+                    p.text = request.POST.get('category5')
+                    p.messe_text = request.POST.get('title5')
+                    p.beschreibung = request.POST.get('description5')
+                    
+                case (6):
+                    p.category_id = request.POST.get('category6')
+                    p.messe_text = request.POST.get('title6')
+                    p.beschreibung = request.POST.get('description6')
+                    
+            
+            p.save()
             
             
+        if request.FILES.get('image1'):
+            print(deleteImage[0]['image1'])
+            os.remove(deleteImage[0]['image1'])
+            updateImage.image1 = request.FILES.get('image1')
+        if request.FILES.get('image2'):
+            os.remove(deleteImage[0]['image2'])
+            updateImage.image2 = request.FILES.get('image2')
+        updateImage.save()
         
-        updateImage.image1 = request.FILES.get('image1')
-        updateImage.image2 = request.FILES.get('image2')
-        # updateData=TradeFair(category_id=request.POST.get('category'),title=request.POST.get('title'),
-        #     description=request.POST.get('description'),image1=request.FILES.get('image1'),image2=request.FILES.get('image2'))
-        updateData.save()
         return redirect('home')
     return render(request, 'editbranchen.html', {'cats':cats, 'category_posts':category_posts})
 
 def DeleteBranchen(request, cats):
-    category_posts = TradeFair.objects.filter(category_id=cats).values()
+    category_posts = TradeFair.objects.filter(b_id=cats).values()
+    url = './static/sector_images/%d' % cats
+    print(url)
+    shutil.rmtree(url, ignore_errors = False)
+    # os.remove(category_posts[0]['image1'])
+    # os.remove(category_posts[0]['image2'])
     
-    os.remove(category_posts[0]['image1'])
-    os.remove(category_posts[0]['image2'])
-    
-    TradeFair.objects.filter(category_id=cats).delete()
+    Branchen.objects.filter(b_id=cats).delete()
+    TradeFair.objects.filter(b_id=cats).delete()
     # print(category_posts[0].image1.url)
     # os.remove(category_posts[0].image1.url)
     return redirect('home')
