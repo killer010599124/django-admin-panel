@@ -14,8 +14,8 @@
   <body>
 <!--    <h1>Hello, world!</h1>-->
         {% block content %}
-        <div>
-          <h2>Edit Messe Branchen</h2>
+        <div style = "margin-top: 5vh; text-align: center;">
+          <h2 style = " color: green;font-size:45px">Edit Messe Branchen</h2>
         </div>
         {% for trade in category_posts|slice:":1" %}.
         
@@ -180,7 +180,7 @@
             {% endif %} {% endcomment %}
           </div>
          
-          <button type="submit">Update</button>
+          <button type="submit" style = "float: right; margin-right: 10vw;">Update</button>
          {{ form }}
         </form>
         
