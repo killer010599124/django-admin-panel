@@ -15,10 +15,6 @@ def HomeView(request):
     context = {}
     context["dataset"] = TradeFair.objects.all().order_by('title').values()
     context["branchen"] = Branchen.objects.filter(sprach_id = 2).order_by('text').values()
-    
-    
-    
-    
     context["alphabet"] = alphabet
     return render(request, "branchenhome.html", context)
 
@@ -170,4 +166,10 @@ def DeleteBranchen(request, cats):
     # os.remove(category_posts[0].image1.url)
     return redirect('home')
     # return render(request, 'trade_fair.html', {'cats':cats, 'category_posts':category_posts})
-    
+
+def BranchenCategory(request):
+    alphabet = string.ascii_uppercase
+    context = {}
+    context["alphabet"] = alphabet
+    context["branchen"] = Branchen.objects.filter(sprach_id = 2).order_by('text').values()
+    return render(request, "userBranchenCategory.html", context)
