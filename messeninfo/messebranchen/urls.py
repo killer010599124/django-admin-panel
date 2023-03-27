@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HomeView, CategoryView, NewBranchenView, EditBranchenView, DeleteBranchen , BranchenCategory
+from .views import HomeView, CategoryView, NewBranchenView, EditBranchenView, DeleteBranchen , BranchenCategory, BranchenDetail
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
@@ -11,7 +11,8 @@ urlpatterns = [
     # path('addForm', )
     path('edit/<int:cats>/' , EditBranchenView, name = 'edit'),
     path('delete/<int:cats>', DeleteBranchen, name = 'delete'),
-    path('user', BranchenCategory, name = 'user')
+    path('user', BranchenCategory, name = 'user'),
+    path('user/detail/<int:cats>', BranchenDetail,name = 'detail')
     ]
     
 if settings.DEBUG:

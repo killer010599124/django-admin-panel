@@ -173,3 +173,7 @@ def BranchenCategory(request):
     context["alphabet"] = alphabet
     context["branchen"] = Branchen.objects.filter(sprach_id = 2).order_by('text').values()
     return render(request, "userBranchenCategory.html", context)
+
+def BranchenDetail(request, cats):
+    category_posts = Branchen.objects.filter(b_id=cats)
+    return render(request, "userBranchenDetail.html",{'cats':cats, 'category_posts':category_posts})
