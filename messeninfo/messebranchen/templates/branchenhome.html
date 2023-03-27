@@ -71,25 +71,7 @@
         </table>
         
       </div>
-      {% comment %} <ul class="row" style = "list-style-type: none;">
-  
-        {% for category in dataset %}.
-        <li class="col-12 col-md-6 col-lg-3" style = "max-width: 24%; padding: 0">
-            <div class="cnt-block equal-hight" style="background: currentColor;">
-              <figure><img src="{{category.image1 }}" class="img-responsive" style = "width:100%" height="153px" alt=""></figure>
-              <h3><a href="{% url 'category' category.category_id %}">{{ category.title }}</a></h3>
-              <div style = "display: flex; flex-direction: row;justify-content: space-between;">
-                
-                <a class="btn btn-primary"  style= "width: 5vw;" href="{% url 'edit' category.category_id  %}">Edit</a>
-                <a class="btn btn-primary"  style= "width: 5vw;" href="{% url 'delete' category.category_id  %}">Delete</a>
-              </div>
-              <p>{{ category.category_name }}</p>
-            </div>
-        </li>
-  
-        {% endfor %}
-  
-      </ul> {% endcomment %}
+      
     </div>
   
   </section>
