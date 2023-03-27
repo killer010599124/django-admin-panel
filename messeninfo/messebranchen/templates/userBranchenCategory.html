@@ -108,12 +108,13 @@
 
 <div style="background-color: #3e403d;height: 70px;">
     <div class="container" style = "margin-left: 22vw;padding-top: 20px;
-    width: 52vw;
+    width: 60vw;
     display: flex;
     justify-content: space-between;">
-        <button style = "color: white;font-size: 20px; border-radius: 10px;border-color: #3b91aa; background-color:#3b91aa">All</a>
+        <a href="{{i}}" ><button style = "color: white;font-size: 20px; border-radius: 10px;border-color: #3b91aa; background-color:#3b91aa">All</button></a>
+        
         {% for i in alphabet %}
-                <button   value = "{{i}}" style = "color: black;font-size: 20px; border-radius: 10px;border-color: white;" >{{i}}</button>
+                <button   value = "{{i}}" style = "color: black;font-size: 20px; border-radius: 10px;border-color: white;width: 35px;" onclick="letterSearch('{{i}}')" >{{i}}</button>
                 {% comment %} {%filterAnime i as filterdObjs%} {% endcomment %}
                 
         {%endfor%}
@@ -199,15 +200,23 @@
     margin-left: auto;
     margin-right: auto;">
   
-        {% for category in branchen %}.
-        <li class="col-12 col-md-6 col-lg-3" style = "max-width: 24%; padding: 0">
+        {% for category in branchen %}
+        <li class="col-12 col-md-6 col-lg-3 category_content" style = "max-width: 24%;">
             <div class="cnt-block equal-hight" style="">
               <figure><img src="/static/sector_images/{{ category.b_id }}/small_{{ category.b_id }}.jpg" alt="connect" style = "width:100%" height="153px"></figure>
               {% comment %} <h3><a href="{% url 'category' category.category_id %}">{{ category.title }}</a></h3> {% endcomment %}
-              
-              <p style = "    position: absolute;
-              margin-top: -50px;
-              margin-left: 10px;">{{ category.text }}</p>
+              <div style = "    position: absolute;
+              margin-top: -52px;
+              /* margin-left: 10px; */
+              color: white;
+              width: 17.5%;
+            height: 35px;
+              font-size: 20px;
+              font-weight: bold;
+              background-color: rgba(0,0,0,0.4);">
+                <p class="category_filter" style = "margin-bottom: 0;margin-left: 15px;">{{ category.text }}</p>
+              </div>
+              <div></div>
             </div>
         </li>
   
@@ -304,7 +313,32 @@
  
 
 <script>
- 
+    function letterSearch(item){
+        var input, filter,  tr, td, i, txtValue;
+        
+        
+       // table = document.getElementById("myTable");
+       // tr = table.getElementsByTagName("tr");
+        content = document.getElementsByClassName("category_content")
+        tr = document.getElementsByClassName("category_filter")
+        
+        for (i = 0; i < content.length; i++) {
+          //tr = content[i].getElementsByClassName("p")
+          
+          td = tr[i].innerHTML
+          if (td) {
+        
+            if (td.toUpperCase()[0] == item) {
+              content[i].style.display = "";
+              
+            } else {
+              
+              content[i].style.display = "none";
+            }
+          }       
+        }
+       
+      }
 </script>
 </body>
 
